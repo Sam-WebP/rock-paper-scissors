@@ -10,11 +10,14 @@
     <script>
        
          // Users choice://
-         let initialSelection = prompt("Choose Rock, Paper or Scissors")
+            let initialSelection = prompt("Choose Rock, Paper or Scissors")
 
-         // Making sure the users choice starts with a capital letter://
-         let lowerCaseVersion = initialSelection.toLowerCase() + initialSelection.slice(1);
-         let playSelection = initialSelection.charAt(0).toUpperCase() + initialSelection.slice(1);
+         // Converting the user's choice starts with a capital letter and have the rest of the characters lower case://
+         //Step 1: Converting to lower case first//
+            let lowerCaseVersion = initialSelection.toLowerCase() + initialSelection.slice(initialSelection.length);
+
+         //Step 2: Changing the first character to upper case//
+            let playSelection = lowerCaseVersion.charAt(0).toUpperCase() + lowerCaseVersion.slice(1);
 
          // Randomizing the computers choice://
          let words = ["Rock", "Paper", "Scissors"];
@@ -22,8 +25,7 @@
          function randomGenerator(words) {
            return words[Math.floor(Math.random() * words.length)];   
         }
-        
-       let computersAnswer = randomGenerator(words)
+         let computersAnswer = randomGenerator(words)
 
             // Game conditions://
 
@@ -51,6 +53,8 @@
           }
        
        console.log(computersAnswer)
+
+
 
     </script>
 </body>
