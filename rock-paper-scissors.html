@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+         // Users choice://
+         let initialSelection = prompt("Choose Rock, Paper or Scissors")
+
+         // Making sure the users choice starts with a capital letter://
+         let lowerCaseVersion = initialSelection.toLowerCase() + initialSelection.slice(1);
+         let playSelection = initialSelection.charAt(0).toUpperCase() + initialSelection.slice(1);
+
+         // Randomizing the computers choice://
+         let words = ["Rock", "Paper", "Scissors"];
+
+         function randomGenerator(words) {
+           return words[Math.floor(Math.random() * words.length)];   
+        }
+        
+       let computersAnswer = randomGenerator(words)
+
+            // Game conditions://
+
+            // Game is a draw if://
+       if(computersAnswer === "Rock" && playSelection === "Rock"
+          || computersAnswer === "Paper" && playSelection === "Paper"
+          || computersAnswer === "Scissors" && playSelection === "Scissors") {
+            alert("This is a draw");
+
+            // User loses if://
+          } else if(computersAnswer === "Rock" && playSelection === "Scissors"
+          || computersAnswer === "Paper" && playSelection === "Rock"
+          || computersAnswer === "Scissors" && playSelection === "Paper") {
+            alert("You lose!");
+
+            // User wins if://
+          } else if(computersAnswer === "Scissors" && playSelection === "Rock"
+          || computersAnswer === "Rock" && playSelection === "Paper"
+          || computersAnswer === "Paper" && playSelection === "Scissors") {
+            alert("You win!");
+          
+           // If the user does not type a valid option://
+          } else {
+            alert("Make sure you type a valid selection between Rock, Paper or Scissors!")
+          }
+       
+       console.log(computersAnswer)
+
+    </script>
+</body>
+</html>
