@@ -7,10 +7,43 @@
     <title>Document</title>
 </head>
 <body>
+
+   <h1>Choose Rock, Paper or Scissors</h1>
+
+      <button id=Rock>Rock</button>
+      <button id=Paper>Paper</button>
+      <button id=Scissors>Scissors</button>
+
     <script>
        
+          let playerScore = 0
+          let computerScore = 0
+          var playSelection
+         // for (let i = 0; playerScore < 5 && computerScore < 5; i++) { //
+          
          // Users choice://
-            let initialSelection = prompt("Choose Rock, Paper or Scissors")
+
+         function playerClicked(choice) {
+               if (choice === "Rock") {
+                  playSelection === "Rock"
+                  console.log("playSelection is " + playSelection)
+               } else if (choice === "Paper") {
+                  playSelection === "Paper"
+                  console.log("playSelection is " + playSelection)
+               } else if (choice === "Scissors") {
+                  playSelection === "Scissors"
+                  console.log("playSelection is " + playSelection)
+               }
+            }
+               // NOTE FOR WHEN I COME BACK: I THINK THAT THE ISSUE IS THAT I NEED TO MAKE THE BUTTONS START THE ROUND INSTEAD OF IT JUST TYRING TO GIVE THE PLAYSLECTION A VALUE. //
+            
+
+            document.getElementById("Rock").addEventListener("click", playerClicked("Rock"))
+            document.getElementById("Paper").addEventListener("click", playerClicked("Paper"))
+            document.getElementById("Scissors").addEventListener("click", playerClicked("Scissors"))
+
+console.log("playSelection is " + playSelection)
+          /*  let initialSelection = prompt("Choose Rock, Paper or Scissors")
 
          // Converting the user's choice starts with a capital letter and have the rest of the characters lower case://
          //Step 1: Converting to lower case first//
@@ -18,6 +51,7 @@
 
          //Step 2: Changing the first character to upper case//
             let playSelection = lowerCaseVersion.charAt(0).toUpperCase() + lowerCaseVersion.slice(1);
+         */
 
          // Randomizing the computers choice://
          let words = ["Rock", "Paper", "Scissors"];
@@ -27,32 +61,36 @@
         }
          let computersAnswer = randomGenerator(words)
 
+            // Game stats //
+
             // Game conditions://
 
             // Game is a draw if://
        if(computersAnswer === "Rock" && playSelection === "Rock"
           || computersAnswer === "Paper" && playSelection === "Paper"
           || computersAnswer === "Scissors" && playSelection === "Scissors") {
-            alert("This is a draw");
+            alert("This round is a draw. You have " + playerScore + " points vs the computer with " + computerScore + " points.");
 
             // User loses if://
           } else if(computersAnswer === "Rock" && playSelection === "Scissors"
           || computersAnswer === "Paper" && playSelection === "Rock"
           || computersAnswer === "Scissors" && playSelection === "Paper") {
-            alert("You lose!");
+            computerScore += 1
+            alert("You lose this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
 
             // User wins if://
           } else if(computersAnswer === "Scissors" && playSelection === "Rock"
           || computersAnswer === "Rock" && playSelection === "Paper"
           || computersAnswer === "Paper" && playSelection === "Scissors") {
-            alert("You win!");
+            playerScore += 1
+            alert("You won this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
           
            // If the user does not type a valid option://
           } else {
             alert("Make sure you type a valid selection between Rock, Paper or Scissors!")
           }
-       
-       console.log(computersAnswer)
+          //}//
+       console.log("computersAnswer is " + computersAnswer)
 
 
 
