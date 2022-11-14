@@ -9,6 +9,11 @@
 <body>
     <script>
        
+          let playerScore = 0
+          let computerScore = 0
+
+          for (let i = 0; playerScore < 5 && computerScore < 5; i++) {
+          
          // Users choice://
             let initialSelection = prompt("Choose Rock, Paper or Scissors")
 
@@ -27,31 +32,35 @@
         }
          let computersAnswer = randomGenerator(words)
 
+            // Game stats //
+
             // Game conditions://
 
             // Game is a draw if://
        if(computersAnswer === "Rock" && playSelection === "Rock"
           || computersAnswer === "Paper" && playSelection === "Paper"
           || computersAnswer === "Scissors" && playSelection === "Scissors") {
-            alert("This is a draw");
+            alert("This round is a draw. You have " + playerScore + " points vs the computer with " + computerScore + " points.");
 
             // User loses if://
           } else if(computersAnswer === "Rock" && playSelection === "Scissors"
           || computersAnswer === "Paper" && playSelection === "Rock"
           || computersAnswer === "Scissors" && playSelection === "Paper") {
-            alert("You lose!");
+            computerScore += 1
+            alert("You lose this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
 
             // User wins if://
           } else if(computersAnswer === "Scissors" && playSelection === "Rock"
           || computersAnswer === "Rock" && playSelection === "Paper"
           || computersAnswer === "Paper" && playSelection === "Scissors") {
-            alert("You win!");
+            playerScore += 1
+            alert("You won this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
           
            // If the user does not type a valid option://
           } else {
             alert("Make sure you type a valid selection between Rock, Paper or Scissors!")
           }
-       
+          }
        console.log(computersAnswer)
 
 
