@@ -14,35 +14,46 @@
       <button id=Paper>Paper</button>
       <button id=Scissors>Scissors</button>
 
+   <div id="displayPlayer"></div>
+   <div id="displayComputer"></div>
+
     <script>
        
           let playerScore = 0
           let computerScore = 0
           var playSelection
+
          // for (let i = 0; playerScore < 5 && computerScore < 5; i++) { //
           
          // Users choice://
 
          function playerClicked(choice) {
-               if (choice === "Rock") {
-                  playSelection === "Rock"
-                  console.log("playSelection is " + playSelection)
-               } else if (choice === "Paper") {
-                  playSelection === "Paper"
-                  console.log("playSelection is " + playSelection)
-               } else if (choice === "Scissors") {
-                  playSelection === "Scissors"
-                  console.log("playSelection is " + playSelection)
-               }
-            }
-               // NOTE FOR WHEN I COME BACK: I THINK THAT THE ISSUE IS THAT I NEED TO MAKE THE BUTTONS START THE ROUND INSTEAD OF IT JUST TYRING TO GIVE THE PLAYSLECTION A VALUE. //
-            
+               if (playerScore < 5 && computerScore <5) {
+                  if (choice === "Rock") {
+                     playSelection = "Rock"
+                     playRound(playSelection)
+                     console.log("playSelection is " + playSelection)
+                  } else if (choice === "Paper") {
+                     playSelection = "Paper"
+                     playRound(playSelection)
+                     console.log("playSelection is " + playSelection)
+                  } else if (choice === "Scissors") {
+                     playSelection = "Scissors"
+                     playRound(playSelection)
+                     console.log("playSelection is " + playSelection)
+                  } 
+                  } else {
+                     playerScore = 0
+                     computerScore = 0
+                  }
+            }            
 
-            document.getElementById("Rock").addEventListener("click", playerClicked("Rock"))
-            document.getElementById("Paper").addEventListener("click", playerClicked("Paper"))
-            document.getElementById("Scissors").addEventListener("click", playerClicked("Scissors"))
+            document.getElementById("Rock").addEventListener("click", function() { playerClicked("Rock"); })
+            document.getElementById("Paper").addEventListener("click", function() { playerClicked("Paper"); })
+            document.getElementById("Scissors").addEventListener("click", function() { playerClicked("Scissors"); })
 
-console.log("playSelection is " + playSelection)
+            document.getElementById("displayPlayer"). //CONTINUE ON FROM HERE YOU NOOB AND ADD THE DISPLAY SCORE
+
           /*  let initialSelection = prompt("Choose Rock, Paper or Scissors")
 
          // Converting the user's choice starts with a capital letter and have the rest of the characters lower case://
@@ -52,6 +63,8 @@ console.log("playSelection is " + playSelection)
          //Step 2: Changing the first character to upper case//
             let playSelection = lowerCaseVersion.charAt(0).toUpperCase() + lowerCaseVersion.slice(1);
          */
+
+            function playRound(playSelection) {
 
          // Randomizing the computers choice://
          let words = ["Rock", "Paper", "Scissors"];
@@ -77,6 +90,10 @@ console.log("playSelection is " + playSelection)
           || computersAnswer === "Scissors" && playSelection === "Paper") {
             computerScore += 1
             alert("You lose this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+            if (computerScore === 5) {
+               let computerWins = computerScore - playerScore;
+               alert("GAME FINISHED: You lost to the computer by " + computerWins + " points")
+            }
 
             // User wins if://
           } else if(computersAnswer === "Scissors" && playSelection === "Rock"
@@ -84,7 +101,10 @@ console.log("playSelection is " + playSelection)
           || computersAnswer === "Paper" && playSelection === "Scissors") {
             playerScore += 1
             alert("You won this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
-          
+            if (playerScore === 5) {
+               let playerWins = playerScore - computerScore;
+               alert("GAME FINISHED: You beat the computer by " + playerWins + " points")
+            }
            // If the user does not type a valid option://
           } else {
             alert("Make sure you type a valid selection between Rock, Paper or Scissors!")
@@ -92,7 +112,7 @@ console.log("playSelection is " + playSelection)
           //}//
        console.log("computersAnswer is " + computersAnswer)
 
-
+           }
 
     </script>
 </body>
