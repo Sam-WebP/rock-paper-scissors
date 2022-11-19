@@ -14,15 +14,14 @@
       <button id=Paper>Paper</button>
       <button id=Scissors>Scissors</button>
 
-   <div id="displayPlayer"></div>
-   <div id="displayComputer"></div>
-
+   
+   <h3><span>Your score is </span> <span id="displayPlayer">0</span> <span> VS </span> <span>the Computer with </span> <span id="displayComputer">0</span></h3>
     <script>
        
           let playerScore = 0
           let computerScore = 0
           var playSelection
-
+          
          // for (let i = 0; playerScore < 5 && computerScore < 5; i++) { //
           
          // Users choice://
@@ -52,7 +51,8 @@
             document.getElementById("Paper").addEventListener("click", function() { playerClicked("Paper"); })
             document.getElementById("Scissors").addEventListener("click", function() { playerClicked("Scissors"); })
 
-            document.getElementById("displayPlayer"). //CONTINUE ON FROM HERE YOU NOOB AND ADD THE DISPLAY SCORE
+            
+
 
           /*  let initialSelection = prompt("Choose Rock, Paper or Scissors")
 
@@ -82,16 +82,20 @@
        if(computersAnswer === "Rock" && playSelection === "Rock"
           || computersAnswer === "Paper" && playSelection === "Paper"
           || computersAnswer === "Scissors" && playSelection === "Scissors") {
-            alert("This round is a draw. You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+            //alert("This round is a draw. You have " + playerScore + " points vs the computer with " + computerScore + " points.");
 
             // User loses if://
           } else if(computersAnswer === "Rock" && playSelection === "Scissors"
           || computersAnswer === "Paper" && playSelection === "Rock"
           || computersAnswer === "Scissors" && playSelection === "Paper") {
             computerScore += 1
-            alert("You lose this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+            //alert("You lose this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+            document.getElementById("displayComputer").textContent = computerScore;
+            //Once the computer has 5 points
             if (computerScore === 5) {
                let computerWins = computerScore - playerScore;
+               document.getElementById("displayComputer").textContent = 0;
+               document.getElementById("displayPlayer").textContent = 0;
                alert("GAME FINISHED: You lost to the computer by " + computerWins + " points")
             }
 
@@ -100,10 +104,14 @@
           || computersAnswer === "Rock" && playSelection === "Paper"
           || computersAnswer === "Paper" && playSelection === "Scissors") {
             playerScore += 1
-            alert("You won this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+            //alert("You won this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+            document.getElementById("displayPlayer").textContent = playerScore;
+            //Once player has 5 points
             if (playerScore === 5) {
                let playerWins = playerScore - computerScore;
-               alert("GAME FINISHED: You beat the computer by " + playerWins + " points")
+               document.getElementById("displayPlayer").textContent = 0;
+               document.getElementById("displayComputer").textContent = 0;
+               alert("GAME FINISHED: You beat the computer by " + playerWins + " points")   
             }
            // If the user does not type a valid option://
           } else {
