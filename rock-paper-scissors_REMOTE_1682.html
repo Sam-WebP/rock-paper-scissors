@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+   <h1>Choose Rock, Paper or Scissors</h1>
+
+      <button id=Rock>Rock</button>
+      <button id=Paper>Paper</button>
+      <button id=Scissors>Scissors</button>
+
+   
+   <h3><span>Your score is </span> <span id="displayPlayer">0</span> <span> VS </span> <span>the Computer with </span> <span id="displayComputer">0</span></h3>
+    <script>
+       
+          let playerScore = 0
+          let computerScore = 0
+          var playSelection
+          
+         // for (let i = 0; playerScore < 5 && computerScore < 5; i++) { //
+          
+         // Users choice://
+
+         function playerClicked(choice) {
+               if (playerScore < 5 && computerScore <5) {
+                  if (choice === "Rock") {
+                     playSelection = "Rock"
+                     playRound(playSelection)
+                     console.log("playSelection is " + playSelection)
+                  } else if (choice === "Paper") {
+                     playSelection = "Paper"
+                     playRound(playSelection)
+                     console.log("playSelection is " + playSelection)
+                  } else if (choice === "Scissors") {
+                     playSelection = "Scissors"
+                     playRound(playSelection)
+                     console.log("playSelection is " + playSelection)
+                  } 
+                  } else {
+                     playerScore = 0
+                     computerScore = 0
+                  }
+            }            
+
+            document.getElementById("Rock").addEventListener("click", function() { playerClicked("Rock"); })
+            document.getElementById("Paper").addEventListener("click", function() { playerClicked("Paper"); })
+            document.getElementById("Scissors").addEventListener("click", function() { playerClicked("Scissors"); })
+
+            
+
+
+          /*  let initialSelection = prompt("Choose Rock, Paper or Scissors")
+
+         // Converting the user's choice starts with a capital letter and have the rest of the characters lower case://
+         //Step 1: Converting to lower case first//
+            let lowerCaseVersion = initialSelection.toLowerCase() + initialSelection.slice(initialSelection.length);
+
+         //Step 2: Changing the first character to upper case//
+            let playSelection = lowerCaseVersion.charAt(0).toUpperCase() + lowerCaseVersion.slice(1);
+         */
+
+            function playRound(playSelection) {
+
+         // Randomizing the computers choice://
+         let words = ["Rock", "Paper", "Scissors"];
+
+         function randomGenerator(words) {
+           return words[Math.floor(Math.random() * words.length)];   
+        }
+         let computersAnswer = randomGenerator(words)
+
+            // Game stats //
+
+            // Game conditions://
+
+            // Game is a draw if://
+       if(computersAnswer === "Rock" && playSelection === "Rock"
+          || computersAnswer === "Paper" && playSelection === "Paper"
+          || computersAnswer === "Scissors" && playSelection === "Scissors") {
+            //alert("This round is a draw. You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+
+            // User loses if://
+          } else if(computersAnswer === "Rock" && playSelection === "Scissors"
+          || computersAnswer === "Paper" && playSelection === "Rock"
+          || computersAnswer === "Scissors" && playSelection === "Paper") {
+            computerScore += 1
+            //alert("You lose this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+            document.getElementById("displayComputer").textContent = computerScore;
+            //Once the computer has 5 points
+            if (computerScore === 5) {
+               let computerWins = computerScore - playerScore;
+               document.getElementById("displayComputer").textContent = 0;
+               document.getElementById("displayPlayer").textContent = 0;
+               alert("GAME FINISHED: You lost to the computer by " + computerWins + " points")
+            }
+
+            // User wins if://
+          } else if(computersAnswer === "Scissors" && playSelection === "Rock"
+          || computersAnswer === "Rock" && playSelection === "Paper"
+          || computersAnswer === "Paper" && playSelection === "Scissors") {
+            playerScore += 1
+            //alert("You won this round! You have " + playerScore + " points vs the computer with " + computerScore + " points.");
+            document.getElementById("displayPlayer").textContent = playerScore;
+            //Once player has 5 points
+            if (playerScore === 5) {
+               let playerWins = playerScore - computerScore;
+               document.getElementById("displayPlayer").textContent = 0;
+               document.getElementById("displayComputer").textContent = 0;
+               alert("GAME FINISHED: You beat the computer by " + playerWins + " points")   
+            }
+           // If the user does not type a valid option://
+          } else {
+            alert("Make sure you type a valid selection between Rock, Paper or Scissors!")
+          }
+          //}//
+       console.log("computersAnswer is " + computersAnswer)
+
+           }
+
+    </script>
+</body>
+</html>
